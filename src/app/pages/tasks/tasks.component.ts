@@ -56,14 +56,14 @@ export class TasksComponent {
   public onInitialized(e: InitializedEvent) {
     console.debug(`> MJP - grid init 1`, this.dataGrid.columns.map((col: any) => [col.dataField, col.width, col.hidingPriority]));
     setGridColumnHidingPriorities(this.dataGrid.columns as dxDataGridColumn[]);
-    setDefaultGridColumnWidths(this.dataGrid.columns as any[], new Set(['Task_Status']));
+    setDefaultGridColumnWidths(this.dataGrid.columns as any[], new Set(['Task_Status', 'Task_Completion', 'ResponsibleEmployee.Employee_Full_Name']));
     console.debug(`> MJP - grid init 2`, this.dataGrid.columns.map((col: any) => [col.dataField, col.width, col.hidingPriority]));
   };
   
 }
 
 export const GridStandardWidths = {
-  username: 120,
+  special: 120,
   date: 80,
   number: 100,
 };
@@ -77,7 +77,7 @@ export interface IGenericCol {
   visibleWidth: number;
 };
 
-function calcWidth(col: IGenericCol, userNameFieldSet: Set<string>): number | 'auto' | null {
+function calcWidth(col: IGenericCol, specialFields: Set<string>): number | 'auto' | null {
   if (col.width === 'auto') {
     return 'auto';
   }
@@ -88,19 +88,19 @@ function calcWidth(col: IGenericCol, userNameFieldSet: Set<string>): number | 'a
     return GridStandardWidths[col.dataType];
   }
   const name = col.dataField ?? col.name; 
-  if (name && userNameFieldSet?.has(name)) {
-    return GridStandardWidths.username;
+  if (name && specialFields?.has(name)) {
+    return GridStandardWidths.special;
   }
   return null;
 }
 
-export function setDefaultGridColumnWidths(columns: IGenericCol[], userNameFieldSet: Set<string>): void {
+export function setDefaultGridColumnWidths(columns: IGenericCol[], specialFields: Set<string>): void {
   const pri = columns.length;
   columns.forEach((col, i) => {
     if (typeof col === 'string') {
       console.error(`invalid column type - expected Column`);
     } else {
-      const width = calcWidth(col, userNameFieldSet);
+      const width = calcWidth(col, specialFields);
       if (width !== null) {
         console.debug(`> set width [${width}] [${col.dataField ?? col.name}]`)
         col.width = width;
