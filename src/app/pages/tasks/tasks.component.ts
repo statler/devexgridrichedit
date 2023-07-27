@@ -9,6 +9,13 @@ export class TasksComponent {
   dataSource: any;
   priority: any[];
 
+  columnsChanging(e: any) {
+    console.log("Colchange");
+  }
+  selectionChangedHandler(e:any) {
+    console.log("Selected");
+  }
+
   constructor() {
     this.dataSource = {
       store: {
