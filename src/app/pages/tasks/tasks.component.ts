@@ -23,6 +23,9 @@ export class TasksComponent {
   }
 
   constructor() {
+
+    this.customizeColumns = this.customizeColumns.bind(this);
+
     this.dataSource = {
       store: {
         type: 'odata',
@@ -56,9 +59,16 @@ export class TasksComponent {
   public onInitialized(e: InitializedEvent) {
     console.debug(`> MJP - grid init 1`, this.dataGrid.columns.map((col: any) => [col.dataField, col.width, col.hidingPriority]));
     setGridColumnHidingPriorities(this.dataGrid.columns as dxDataGridColumn[]);
-    setDefaultGridColumnWidths(this.dataGrid.columns as any[], new Set(['Task_Status', 'Task_Completion', 'ResponsibleEmployee.Employee_Full_Name']));
+    // setDefaultGridColumnWidths(this.dataGrid.columns as any[], new Set(['Task_Status', 'Task_Completion', 'ResponsibleEmployee.Employee_Full_Name']));
     console.debug(`> MJP - grid init 2`, this.dataGrid.columns.map((col: any) => [col.dataField, col.width, col.hidingPriority]));
+
   };
+
+  customizeColumns(columns) {
+    console.debug(`> MJP - cust init 1`, columns.map((col: any) => [col.dataField, col.width, col.hidingPriority]));
+    setDefaultGridColumnWidths(columns as any[], new Set(['Task_Status', 'Task_Completion', 'ResponsibleEmployee.Employee_Full_Name']));
+    // debugger;
+  }
   
 }
 
@@ -77,10 +87,10 @@ export interface IGenericCol {
   visibleWidth: number;
 };
 
-function calcWidth(col: IGenericCol, specialFields: Set<string>): number | 'auto' | null {
-  if (col.width === 'auto') {
-    return 'auto';
-  }
+function calcWidth(col: IGenericCol, specialFields: Set<string>): number | string | null {
+  if (typeof col.width === 'string') {
+    return col.width;
+  } 
   if (typeof col.width === 'number') {
     return col.width;
   }
@@ -104,6 +114,8 @@ export function setDefaultGridColumnWidths(columns: IGenericCol[], specialFields
       if (width !== null) {
         console.debug(`> set width [${width}] [${col.dataField ?? col.name}]`)
         col.width = width;
+      } else {
+        console.debug(`> leave width [${col.width}] [${col.dataField ?? col.name}]`)
       }
     }
   });
