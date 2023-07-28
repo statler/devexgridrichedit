@@ -1,8 +1,8 @@
 <h2 class="content-block">Tasks</h2>
 
 <!-- 
-  columnResizingMode="nextColumn" 
-  columnResizingMode="widget" 
+  columnResizeMode="nextColumn" 
+  columnResizeMode="widget" 
   width="100%"
   [columnAutoWidth]="true"
 -->
@@ -11,14 +11,14 @@
   #dataGrid
   class="dx-card wide-card"
   [dataSource]="dataSource"
-    [showBorders]="false"
-    [focusedRowEnabled]="true"
-    [focusedRowIndex]="0"
-    [allowColumnResizing]="true"
-    [columnAutoWidth]="true"
-    columnResizingMode="widget"
-    [columnHidingEnabled]="true"
-    [remoteOperations]="true"
+  [showBorders]="false"
+  [focusedRowEnabled]="true"
+  [focusedRowIndex]="0"
+  [allowColumnResizing]="true"
+  [columnAutoWidth]="true"
+  [columnResizingMode]="'widget'"
+  [columnHidingEnabled]="true"
+  [remoteOperations]="true"
   [customizeColumns]="customizeColumns"
   (onSelectionChanged)="selectionChangedHandler($event)"
   (onColumnsChanging)="columnsChanging($event)"
@@ -30,20 +30,27 @@
   <dxo-pager [showPageSizeSelector]="true" [showInfo]="true"></dxo-pager>
   <dxo-filter-row [visible]="true"></dxo-filter-row>
 
-  <dxo-column-fixing [enabled]="true"></dxo-column-fixing>
-  <dxo-scrolling mode="virtual"></dxo-scrolling>
-  <dxo-selection mode="multiple" showCheckBoxesMode="onClick" [allowSelectAll]="true"></dxo-selection>
-  <dxo-summary>
+  <!-- COMMENTED regions are similar to CP Registers -->
+  <!-- <dxo-selection mode="multiple"> </dxo-selection> -->
+  <!-- <dxo-column-fixing [enabled]="true"></dxo-column-fixing> -->
+  <!-- <dxo-scrolling mode="virtual"></dxo-scrolling> -->
+  <!-- <dxo-selection mode="multiple" showCheckBoxesMode="onClick" [allowSelectAll]="true"></dxo-selection> -->
+  <!-- <dxo-summary>
     <dxi-total-item column="Task_ID" summaryType="count"> </dxi-total-item>
-  </dxo-summary>
-  <dxo-pager  [visible]="false" displayMode="adaptive" allowedPageSizes="auto" [showInfo]="false" [showNavigationButtons]="false" [showPageSizeSelector]="false" ></dxo-pager>
-  <dxo-filter-row [visible]="true"></dxo-filter-row>
-  <dxo-header-filter [visible]="true"></dxo-header-filter>
-  <dxo-group-panel [visible]="true"> </dxo-group-panel>
-  <dxo-state-storing [enabled]="true" type="sessionStorage" storageKey="TaskGridState" ></dxo-state-storing>
+  </dxo-summary> -->
+  <!-- <dxo-pager  [visible]="false" displayMode="adaptive" allowedPageSizes="auto" [showInfo]="false" [showNavigationButtons]="false" [showPageSizeSelector]="false" ></dxo-pager> -->
+  <!-- <dxo-filter-row [visible]="true"></dxo-filter-row> -->
+  <!-- <dxo-header-filter [visible]="true"></dxo-header-filter> -->
+  <!-- <dxo-group-panel [visible]="true"> </dxo-group-panel> -->
+  <!-- <dxo-state-storing [enabled]="true" type="sessionStorage" storageKey="TaskGridState" ></dxo-state-storing> -->
 
-  <dxi-column
-  dataField="Task_ID"   [fixed]="true" [fixedPosition]="'left'"
+
+<!-- <dxi-column
+  dataField="Task_ID"  [fixed]="true" [fixedPosition]="'left'"
+  [width]="90">
+</dxi-column> -->
+<dxi-column
+  dataField="Task_ID"
   [width]="90">
 </dxi-column>
 <dxi-column
