@@ -11,6 +11,7 @@ import {
   DxButtonModule,
   DxSelectBoxModule,
 } from 'devextreme-angular';
+import { Tasks2Component } from './pages/tasks2/tasks2.component';
 
 const routes: Routes = [
   {
@@ -21,6 +22,11 @@ const routes: Routes = [
   {
     path: 'tasks',
     component: TasksComponent,
+    canActivate: [AuthGuardService]
+  },
+  {
+    path: 'tasks2',
+    component: Tasks2Component,
     canActivate: [AuthGuardService]
   },
   {
@@ -69,6 +75,7 @@ const routes: Routes = [
     HomeComponent,
     ProfileComponent,
     TasksComponent,
+    Tasks2Component,
     selectdemoComponent, 
     StringifyEmployeesPipe
   ]

@@ -32,7 +32,7 @@ export class SideNavInnerToolbarComponent implements OnInit {
   constructor(private screen: ScreenService, private router: Router) { }
 
   ngOnInit() {
-    this.menuOpened = this.screen.sizes['screen-large'];
+    this.menuOpened = false; // this.screen.sizes['screen-large'];
 
     this.router.events.subscribe(val => {
       if (val instanceof NavigationEnd) {
