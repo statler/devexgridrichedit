@@ -17,7 +17,7 @@ export const navigation = [
         path: '/tasks'
       },
       {
-        text: 'Tasks2',
+        text: 'RichEdit',
         path: '/tasks2'
       },
       {
