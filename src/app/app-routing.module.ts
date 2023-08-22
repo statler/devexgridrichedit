@@ -13,6 +13,7 @@ import {
   DxSelectBoxModule
   
 } from 'devextreme-angular';
+import { AppModule } from "./app.module";
 
 const routes: Routes = [
   {
@@ -73,7 +74,6 @@ const routes: Routes = [
         HomeComponent,
         ProfileComponent,
         TasksComponent,
-        Tasks2Component,
         selectdemoComponent,
         StringifyEmployeesPipe
     ],

@@ -8,6 +8,8 @@ import { AuthService, ScreenService, AppInfoService } from './shared/services';
 import { UnauthenticatedContentModule } from './unauthenticated-content';
 import { AppRoutingModule } from './app-routing.module';
 import { RicheditComponent } from 'src/app/richedit/richedit.component';
+import { Tasks2Component } from './pages/tasks2/tasks2.component';
+import { DxDataGridModule } from 'devextreme-angular';
 
 
 // @NgModule({
@@ -24,7 +26,8 @@ import { RicheditComponent } from 'src/app/richedit/richedit.component';
 @NgModule({
   declarations: [
     AppComponent,
-    RicheditComponent
+    RicheditComponent,
+    Tasks2Component
   ],
   imports: [
     BrowserModule,
@@ -37,14 +40,16 @@ import { RicheditComponent } from 'src/app/richedit/richedit.component';
     ChangePasswordFormModule,
     LoginFormModule,
     UnauthenticatedContentModule,
-    AppRoutingModule
+    AppRoutingModule,
+    DxDataGridModule
   ],
   providers: [
     AuthService,
     ScreenService,
     AppInfoService
   ],
-  exports:[RicheditComponent],
+  exports:[RicheditComponent,
+  Tasks2Component],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -52,7 +52,7 @@
   dataField="DescriptionAsBase64RichText"
   caption="Subject" [width]='"auto"' editCellTemplate='descriptionRichEditTemplate'></dxi-column>
   <div *dxTemplate='let itemObj of "descriptionRichEditTemplate"'>
-    <!-- <app-richedit></app-richedit>  -->
+    <app-richedit></app-richedit> 
     <!--  [(rtf)]='itemObj.data.DescriptionAsBase64RichText' (onChanged) = "update" (onClose)="loadHtmlFromRtf($event, itemObj)" -->
   </div>
 <dxi-column
