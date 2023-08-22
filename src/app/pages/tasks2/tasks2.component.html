@@ -50,10 +50,10 @@
 </dxi-column>
 <dxi-column
   dataField="DescriptionAsBase64RichText"
-  caption="Subject" [width]='"auto"' editCellTemplate='descriptionRichEditTemplate'></dxi-column>
+  caption="Subject" [width]='"800"' editCellTemplate='descriptionRichEditTemplate'></dxi-column>
   <div *dxTemplate='let itemObj of "descriptionRichEditTemplate"'>
-    <app-richedit></app-richedit> 
-    <!--  [(rtf)]='itemObj.data.DescriptionAsBase64RichText' (onChanged) = "update" (onClose)="loadHtmlFromRtf($event, itemObj)" -->
+    <app-richedit
+     [(rtf)]='itemObj.data.DescriptionAsBase64RichText' ></app-richedit> 
   </div>
 <dxi-column
   dataField="Task_Status"
