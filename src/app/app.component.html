@@ -1,6 +1,7 @@
 <ng-container *ngIf="isAuthenticated(); else unauthenticated">
   <app-side-nav-inner-toolbar title="{{appInfo.title}}">
     <router-outlet></router-outlet>
+    <app-richedit></app-richedit> 
     <app-footer>
       Copyright © 2011-{{appInfo.currentYear}} {{appInfo.title}} Inc.
       <br/>

@@ -5,13 +5,14 @@ import { AuthGuardService } from './shared/services';
 import { HomeComponent } from './pages/home/home.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { TasksComponent } from './pages/tasks/tasks.component';
+import { Tasks2Component } from './pages/tasks2/tasks2.component';
 import { selectdemoComponent, StringifyEmployeesPipe } from './pages/SelectDemo/selectdemo.component';
 import {
   DxDataGridModule, DxFormModule,
   DxButtonModule,
-  DxSelectBoxModule,
+  DxSelectBoxModule
+  
 } from 'devextreme-angular';
-import { Tasks2Component } from './pages/tasks2/tasks2.component';
 
 const routes: Routes = [
   {
@@ -66,18 +67,18 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, { useHash: true }), DxDataGridModule, DxFormModule,
-    DxButtonModule,
-    DxSelectBoxModule,],
-  providers: [AuthGuardService],
-  exports: [RouterModule],
-  declarations: [
-    HomeComponent,
-    ProfileComponent,
-    TasksComponent,
-    Tasks2Component,
-    selectdemoComponent, 
-    StringifyEmployeesPipe
-  ]
+    providers: [AuthGuardService],
+    exports: [RouterModule],
+    declarations: [
+        HomeComponent,
+        ProfileComponent,
+        TasksComponent,
+        Tasks2Component,
+        selectdemoComponent,
+        StringifyEmployeesPipe
+    ],
+    imports: [RouterModule.forRoot(routes, { useHash: true }), DxDataGridModule, DxFormModule,
+        DxButtonModule,
+        DxSelectBoxModule]
 })
 export class AppRoutingModule { }

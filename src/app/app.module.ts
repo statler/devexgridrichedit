@@ -7,10 +7,24 @@ import { FooterModule, ResetPasswordFormModule, CreateAccountFormModule, ChangeP
 import { AuthService, ScreenService, AppInfoService } from './shared/services';
 import { UnauthenticatedContentModule } from './unauthenticated-content';
 import { AppRoutingModule } from './app-routing.module';
+import { RicheditComponent } from 'src/app/richedit/richedit.component';
+
+
+// @NgModule({
+//   declarations: [
+//     RicheditComponent
+//   ],
+//   imports: [
+//   ],
+//   providers: [
+//   ],
+//   exports:[RicheditComponent]
+// }) export class CommonDerpModule{}
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    RicheditComponent
   ],
   imports: [
     BrowserModule,
@@ -30,6 +44,7 @@ import { AppRoutingModule } from './app-routing.module';
     ScreenService,
     AppInfoService
   ],
+  exports:[RicheditComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

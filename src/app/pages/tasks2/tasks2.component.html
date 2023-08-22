@@ -15,21 +15,15 @@
   [focusedRowEnabled]="true"
   [focusedRowIndex]="0"
   [allowColumnResizing]="true"
-  [columnAutoWidth]="true"
   [columnResizingMode]="'widget'"
-  [columnHidingEnabled]="true"
-  [remoteOperations]="true"
-  [customizeColumns]="customizeColumns"
-  (onSelectionChanged)="selectionChangedHandler($event)"
-  (onColumnsChanging)="columnsChanging($event)"
-  (onInitialized)="onInitialized($event)"
+  [remoteOperations]="true" 
   >
 
 
   <dxo-paging [pageSize]="10"></dxo-paging>
   <dxo-pager [showPageSizeSelector]="true" [showInfo]="true"></dxo-pager>
   <dxo-filter-row [visible]="true"></dxo-filter-row>
-
+  <dxo-editing mode="cell" [allowUpdating]="true" [allowDeleting]="true" [newRowPosition]="'first'"></dxo-editing>
   <!-- COMMENTED regions are similar to CP Registers -->
   <!-- <dxo-selection mode="multiple"> </dxo-selection> -->
   <!-- <dxo-column-fixing [enabled]="true"></dxo-column-fixing> -->
@@ -52,21 +46,23 @@
 </dxi-column> -->
 <dxi-column
   dataField="Task_ID"
-  [width]="90">
+  width="90">
 </dxi-column>
 <dxi-column
-  dataField="Task_Subject"
-  caption="Subject">
-  [minWidth]="100"
-</dxi-column>
+  dataField="DescriptionAsBase64RichText"
+  caption="Subject" [width]='"auto"' editCellTemplate='descriptionRichEditTemplate'></dxi-column>
+  <div *dxTemplate='let itemObj of "descriptionRichEditTemplate"'>
+    <!-- <app-richedit></app-richedit>  -->
+    <!--  [(rtf)]='itemObj.data.DescriptionAsBase64RichText' (onChanged) = "update" (onClose)="loadHtmlFromRtf($event, itemObj)" -->
+  </div>
 <dxi-column
   dataField="Task_Status"
-  caption="Status">
+  caption="Status" width="100">  
 </dxi-column>
 <dxi-column
   dataField="Task_Priority"
   caption="Priority"
-  [width]="99"
+  width="99"
   >
   <dxo-lookup
     [dataSource]="priority"
@@ -76,29 +72,32 @@
 </dxi-column>
 <dxi-column
   dataField="ResponsibleEmployee.Employee_Full_Name"
-  caption="Assigned To"
+  caption="Assigned To"  width="100"
   [allowSorting]="false"
   >
 </dxi-column>
 <dxi-column
   dataField="Task_Start_Date"
   caption="Start Date"
-  dataType="date">
+  dataType="date" width="100">
+  
 </dxi-column>
 <dxi-column
   dataField="Task_Due_Date"
   caption="Due Date"
-  dataType="date">
+  dataType="date" width="100">
+  
 </dxi-column>
 <dxi-column
   dataField="Task_Priority"
   caption="Priority"
   name="Priority"
-  [width]="100">
+  width="100">
 </dxi-column>
 <dxi-column
   dataField="Task_Completion"
-  caption="Completion">
+  caption="Completion" width="100">
+  
 </dxi-column>
 
 <!-- <dxi-column
